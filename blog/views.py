@@ -14,7 +14,7 @@ def index(page=1):
     title = "Cherry's Blog"
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, timestamp=datetime.utcnow())
+        post = Post(title=form.title.data, body=form.post.data, timestamp=datetime.utcnow())
         db.session.add(post)
         db.session.commit()
         flash('Your post is now live!')

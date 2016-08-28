@@ -40,6 +40,7 @@ class User(db.Model):
 class Post(db.Model):
     __tablename__ = 'post'
     __searchable__ = ['body']
+    title = db.Column(db.String(50))
     body = db.Column(db.String(3000), primary_key=True)
     timestamp = db.Column(db.DateTime)
 

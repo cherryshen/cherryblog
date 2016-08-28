@@ -13,4 +13,5 @@ class EditForm(Form):
 
 
 class PostForm(Form):
+    title = StringField('title', validators=[DataRequired()])
     post = StringField('post', validators=[DataRequired()])
