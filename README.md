@@ -1,4 +1,4 @@
-Please reat the below
+Please read the below
 
 This is the contents of config file that I have not added as it contains my secret key. 
 
