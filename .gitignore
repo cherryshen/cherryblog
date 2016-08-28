@@ -7,3 +7,4 @@ __pycache__
 config.py
 app.db
 .idea
+.DS_Store
