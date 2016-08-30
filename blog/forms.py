@@ -14,4 +14,7 @@ class EditForm(Form):
 
 class PostForm(Form):
     title = StringField('title', validators=[DataRequired()])
-    post = StringField('post', validators=[DataRequired()])
+    post = TextAreaField('post', validators=[DataRequired()])
+
+class SearchForm(Form):
+    search = StringField('search', validators=[DataRequired()])

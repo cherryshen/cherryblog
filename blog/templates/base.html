@@ -30,6 +30,9 @@
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
           <li><a href="#">Gallery</a></li>
+          {% if current_user.is_authenticated %}
+          <li><a href="/post"> Add Post </a></li>
+          {% endif %}
       </ul>
       <ul class="nav navbar-nav navbar-right">
           {% if not current_user.is_authenticated %}
@@ -37,19 +40,38 @@
           {% else %}
           <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
           {% endif %}
+
+          <!--<div class="input-group">-->
+            <!--<input type="text" class="form-control" placeholder="Search Blog..">-->
+            <!--<span class="input-group-btn">-->
+              <!--<button class="btn btn-default" type="button">-->
+                <!--<span class="glyphicon glyphicon-search"></span>-->
+              <!--</button>-->
+            <!--</span>-->
+          <!--</div>-->
+
+          <form style="display: inline;" action="{{ url_for('search') }}" method="post" name="search">\
+              {{ current_user.search_form.hidden_tag() }}{{ current_user.search_form.search(size=20) }}<input type="submit" value="Search">
+          </form>
+
       </ul>
     </div>
   </div>
 </nav>
 
+
 <div class="container-fluid text-center">
   <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
+    <div class="col-sm-3 sidenav">
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="#section1">Link</a></li>
+            <li><a href="#section2">Link</a></li>
+            <li><a href="#section2">Link</a></li>
+            <li><a href="#section2">Link</a></li>
+        </ul><br>
+
     </div>
-    <div class="col-sm-10 text-left">
+    <div class="col-sm-9 text-left">
         {% block content %}{% endblock %}
     </div>
   </div>

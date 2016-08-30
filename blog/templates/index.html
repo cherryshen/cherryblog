@@ -1,34 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<form action="" method="post" name="post">
-      {{ form.hidden_tag() }}
-      <table>
-          <tr>
-              <td>Blog Title:</td>
-              <td>{{ form.title(cols=10, rows=10) }}</td>
-              <td>Blog Content:</td>
-              <td>{{ form.post(cols=50, rows=10) }}</td>
-              <td>
-              {% for error in form.post.errors %}
-              <span style="color: red;">[{{ error }}]</span><br>
-              {% endfor %}
-              </td>
-          </tr>
-          <tr>
-              <td></td>
-              <td><input type="submit" value="Post!"></td>
-              <td></td>
-          </tr>
-      </table>
-  </form>
-
-  {% for post in posts.items %}
-  <p>
-    <b>{{ post.body }}</b>
-  </p>
-  {% endfor %}
+<div class="container">
+<div class="col-md-12">
+    {% for post in posts.items %}
+    <h1>{{ post.title }} </h1>
+    <p>
+        <br>{{ post.body }}</br>
+    </p>
+    <div>
+    <span class="badge"> Posted on {{ post.timestamp }} </span>
+    {% endfor %}
+    </div>
+</div>
+</div>
+ <br>
+ <br>
 {% if posts.has_prev %}<a href="{{ url_for('index', page=posts.prev_num) }}">&lt;&lt; Newer posts</a>
 {% else %}&lt;&lt; Newer posts{% endif %} |
 {% if posts.has_next %}<a href="{{ url_for('index', page=posts.next_num) }}">Older posts &gt;&gt;</a>

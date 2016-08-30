@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<form action="" method="post" name="post">
+      {{ form.hidden_tag() }}
+      <table>
+          <tr>
+              <td>Blog Title:</td>
+              <td>{{ form.title(cols=10, rows=10) }}</td>
+              <td>Blog Content:</td>
+              <td>{{ form.post(cols=50, rows=10) }}</td>
+              <td>
+              {% for error in form.post.errors %}
+              <span style="color: red;">[{{ error }}]</span><br>
+              {% endfor %}
+              </td>
+          </tr>
+          <tr>
+              <td></td>
+              <td><input type="submit" value="Post!"></td>
+              <td></td>
+          </tr>
+      </table>
+  </form>
+
+{% endblock %}

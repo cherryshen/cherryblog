@@ -1,0 +1,12 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Search results for "{{ query }}":</h1>
+  {% for post in results %}
+    <h1>{{ post.title }} </h1>
+    <p>
+        <br>{{ post.body }}</br>
+    </p>
+  {% endfor %}
+{% endblock %}

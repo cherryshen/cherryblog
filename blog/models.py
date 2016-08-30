@@ -2,9 +2,15 @@ from hashlib import md5
 from blog import db, app
 import sys
 
+#
+# enable_search = (sys.version_info >= (3, 0))
+# if enable_search:
+#     import flask_whooshalchemy as whooshalchemy
 
-enable_search = (sys.version_info >= (3, 0))
-if enable_search:
+if sys.version_info >= (3, 0):
+    enable_search = False
+else:
+    enable_search = True
     import flask_whooshalchemy as whooshalchemy
 
 
@@ -44,8 +50,11 @@ class Post(db.Model):
     body = db.Column(db.String(3000), primary_key=True)
     timestamp = db.Column(db.DateTime)
 
+    # def sorted_posts(self):
+
     def __repr__(self):
         return '<Post %r>' % (self.body)
+
 
 if enable_search:
     whooshalchemy.whoosh_index(app, Post)
