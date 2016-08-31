@@ -24,3 +24,11 @@
       .row.content {height:auto;}
     }
 
+.main-content {
+    padding-top: 20px;
+}
+
+.search-box {
+    width: 300px;
+    padding-top: 7px;
+}
