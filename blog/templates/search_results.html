@@ -3,10 +3,20 @@
 
 {% block content %}
   <h1>Search results for "{{ query }}":</h1>
-  {% for post in results %}
-    <h1>{{ post.title }} </h1>
-    <p>
-        <br>{{ post.body }}
-    </p>
-  {% endfor %}
+<div class="container-fluid main-content">
+    <div class="col-md-12">
+      {% for post in results %}
+       <div class="panel panel-default">
+         <div class="panel-body">
+          <h1>{{ post.title }} </h1>
+          <p>
+            <br>{{ post.body }}
+          </p>
+         <div>
+           <span class="badge"> Posted on {{ post.timestamp }} </span>
+       </div>
+    </div>
+     {% endfor %}
+</div>
 {% endblock %}
+
