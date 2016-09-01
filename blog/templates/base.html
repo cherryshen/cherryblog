@@ -6,7 +6,6 @@
     <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/js/moment.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,35 +28,39 @@
         <li><a href="/about">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
-          <li><a href="#">Gallery</a></li>
+          <li><a href="/gallery">Gallery</a></li>
           {% if current_user.is_authenticated %}
           <li><a href="/post"> Add Post </a></li>
           {% endif %}
+          <li>
+              <div class="search-box">
+            <form style="display: inline;" action="{{ url_for('search') }}" method="post" name="search">
+
+              <div class="input-group">
+                  {{ g.search_form.hidden_tag() }}
+                  {{ g.search_form.search(size=20, class_="form-control") }}
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                      <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                  </span>
+              </div>
+
+            </form>
+                   </div>
+          </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right">
           {% if not current_user.is_authenticated %}
         <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           {% else %}
           <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
           {% endif %}
-
-          <!--<div class="input-group">-->
-            <!--<input type="text" class="form-control" placeholder="Search Blog..">-->
-            <!--<span class="input-group-btn">-->
-              <!--<button class="btn btn-default" type="button">-->
-                <!--<span class="glyphicon glyphicon-search"></span>-->
-              <!--</button>-->
-            <!--</span>-->
-          <!--</div>-->
-
-          <form style="display: inline;" action="{{ url_for('search') }}" method="post" name="search">\
-              {{ current_user.search_form.hidden_tag() }}{{ current_user.search_form.search(size=20) }}<input type="submit" value="Search">
-          </form>
-
       </ul>
     </div>
   </div>
 </nav>
+
 
 
 <div class="container-fluid text-center">

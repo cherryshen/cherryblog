@@ -1,24 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-<div class="col-md-12">
-    {% for post in posts.items %}
-    <h1>{{ post.title }} </h1>
-    <p>
-        <br>{{ post.body }}</br>
-    </p>
-    <div>
-    <span class="badge"> Posted on {{ post.timestamp }} </span>
-    {% endfor %}
+<div class="container-fluid main-content">
+    <div class="col-md-12">
+        {% for post in posts.items %}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h1>{{ post.title }} </h1>
+                    <p>
+                        <br>{{ post.body }}</br>
+                    </p>
+                    <div>
+                        <span class="badge"> Posted on {{ post.timestamp }} </span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 </div>
-</div>
  <br>
  <br>
-{% if posts.has_prev %}<a href="{{ url_for('index', page=posts.prev_num) }}">&lt;&lt; Newer posts</a>
-{% else %}&lt;&lt; Newer posts{% endif %} |
-{% if posts.has_next %}<a href="{{ url_for('index', page=posts.next_num) }}">Older posts &gt;&gt;</a>
-{% else %}Older posts &gt;&gt;{% endif %}
+<nav aria-label="...">
+  <ul class="pager">
+{% if posts.has_prev %}<li><a href="{{ url_for('index', page=posts.prev_num) }}">Newer posts</a></li>
+{% else %} <li>Newer posts</li>{% endif %}
+{% if posts.has_next %}<li><a href="{{ url_for('index', page=posts.next_num) }}">Older posts</a></li>
+{% else %}<li>Older posts</li> {% endif %}
+  </ul>
+</nav>
 
 {% endblock %}
