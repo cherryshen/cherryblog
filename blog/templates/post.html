@@ -4,25 +4,25 @@
 
 
 <form action="" method="post" name="post">
-      {{ form.hidden_tag() }}
-      <table>
-          <tr>
-              <td>Blog Title:</td>
-              <td>{{ form.title(cols=10, rows=10) }}</td>
-              <td>Blog Content:</td>
-              <td>{{ form.post(cols=50, rows=10) }}</td>
-              <td>
-              {% for error in form.post.errors %}
-              <span style="color: red;">[{{ error }}]</span><br>
-              {% endfor %}
-              </td>
-          </tr>
-          <tr>
-              <td></td>
-              <td><input type="submit" value="Post!"></td>
-              <td></td>
-          </tr>
-      </table>
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.title.label }}
+        {{ form.title(cols=10, rows=10, class="form-control", placeholder="Enter a subject for your post...") }}
+    </div>
+    {{ form.post }}
+<input type="submit" value="Post!">
   </form>
 
+<link href="/static/wysiwyg/summernote.css" rel="stylesheet">
+<script src="/static/wysiwyg/summernote.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#{{form.post.id}}').summernote({
+          height: 300,
+          minHeight: null,
+          maxHeight: null,
+          focus: true
+        });
+    });
+</script>
 {% endblock %}

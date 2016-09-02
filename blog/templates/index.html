@@ -4,22 +4,33 @@
 <div class="container-fluid main-content">
     <div class="col-md-12">
         {% for post in posts.items %}
-            <div class="panel panel-default">
+        <div class="panel panel-default">
                 <div class="panel-body">
                     <h1>{{ post.title }} </h1>
                     <p>
-                        <br>{{ post.body }}
+                        <br>{{ post.body|safe }}
                     </p>
                     <div>
                         <span class="badge"> Posted on {{ post.timestamp }} </span>
                     </div>
-                    <li><a href="#">Edit Post</a></li>
-                    <li><a href="#">Delete Post</a></li>
+                    <br>
                 </div>
-            </div>
+        </div>
         {% endfor %}
     </div>
 </div>
+
+<!--<link href="/static/wysiwyg/summernote.css" rel="stylesheet">-->
+<!--<script src="/static/wysiwyg/summernote.min.js"></script>-->
+<!--<script>var edit = function() {-->
+  <!--$('.click2edit').summernote({focus: true});-->
+<!--};-->
+
+<!--var save = function() {-->
+  <!--var makrup = $('.click2edit').summernote('code');-->
+  <!--$('.click2edit').summernote('destroy');-->
+<!--};-->
+<!--</script>-->
 
  <br>
  <br>
