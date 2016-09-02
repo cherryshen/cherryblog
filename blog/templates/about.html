@@ -3,10 +3,13 @@
 
 {% block content %}
 
-    {% if user.about_me %}
+<div class="jumbotron">
+  <h1>Hello, World!</h1>
+  {% if user.about_me %}
     <p>
         {{ user.about_me }}
     </p>
     {% endif %}
+</div>
 
 {% endblock %}
