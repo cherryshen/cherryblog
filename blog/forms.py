@@ -22,8 +22,8 @@ class SearchForm(Form):
 
 
 class ContactForm(Form):
-    name = StringField("Name", validators=[DataRequired()])
+    name = StringField("Name", validators=[DataRequired("Please enter your email name.")])
     email = StringField("Email", [validators.DataRequired("Please enter your email address."), validators.Email("Please enter your email address.")])
-    subject = StringField("Subject", validators=[DataRequired()])
-    message = TextAreaField("Message", validators=[DataRequired()])
-    submit = SubmitField("Send")
+    subject = StringField("Subject", validators=[DataRequired("Please enter subject.")])
+    message = TextAreaField("Message", validators=[DataRequired("Please enter your message.")])
+    submit = SubmitField("Submit Form")

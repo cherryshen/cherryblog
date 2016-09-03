@@ -24,22 +24,46 @@
       <div class="flash">{{ message }}</div>
     {% endfor %}
 
-  <form action="{{ url_for('contact') }}" method=post>
-    {{ form.hidden_tag() }}
+<div class="container">
+<div class="col-md-5">
+    <div class="form-area">
+        <form role="form">
+        <br style="clear:both">
 
-    {{ form.name.label }}
-    {{ form.name }}
+          <form action="{{ url_for('contact') }}" method=post>
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.name(class="form-control", placeholder="Name") }}
+            </div>
+            <div class="form-group">
+                {{ form.email(class="form-control", placeholder="Email") }}
+            </div>
+            <div class="form-group">
+                {{ form.subject(class="form-control", placeholder="Subject") }}
+            </div>
+            <div class="form-group">
+                {{ form.message(class="form-control", placeholder="Message") }}
+            </div>
+            {{ form.submit (class="btn btn-primary pull-right")}}
+          </form>
 
-    {{ form.email.label }}
-    {{ form.email }}
-
-    {{ form.subject.label }}
-    {{ form.subject }}
-
-    {{ form.message.label }}
-    {{ form.message }}
-
-    {{ form.submit }}
-  </form>
 {% endif %}
 {% endblock %}
+
+  <!--<form action="{{ url_for('contact') }}" method=post>-->
+    <!--{{ form.hidden_tag() }}-->
+
+    <!--{{ form.name.label }}-->
+    <!--{{ form.name }}-->
+
+    <!--{{ form.email.label }}-->
+    <!--{{ form.email }}-->
+
+    <!--{{ form.subject.label }}-->
+    <!--{{ form.subject }}-->
+
+    <!--{{ form.message.label }}-->
+    <!--{{ form.message }}-->
+
+    <!--{{ form.submit }}-->
+  <!--</form>-->
