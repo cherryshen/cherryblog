@@ -1,10 +1,10 @@
-from blog import app, lm, bcrypt, db
+from blog import app, lm, bcrypt, db, Message, mail
 from flask import render_template, redirect, url_for, g
-from .forms import LoginForm, EditForm, PostForm, SearchForm
+from .forms import LoginForm, EditForm, PostForm, SearchForm, ContactForm
 from .models import User, Post
 from flask_login import login_required, login_user, current_user, logout_user
 from datetime import datetime
-from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS
+from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, MAIL_USERNAME
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -109,9 +109,24 @@ def search():
 
 @app.route('/search_results/<query>')
 def search_results(query):
-    print query
     results = Post.query.whoosh_search(query, MAX_SEARCH_RESULTS)
-    print results
     return render_template('search_results.html',
                            query=query,
                            results=results)
+
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    form = ContactForm()
+    if form.validate_on_submit():
+        # return redirect(url_for('index'))
+        msg = Message(form.subject.data, sender=MAIL_USERNAME, recipients=[MAIL_USERNAME])
+        msg.body = """
+              From: %s <%s>
+              %s
+              """ % (form.name.data, form.email.data, form.message.data)
+        mail.send(msg)
+        return render_template('contact.html', success=True)
+    return render_template('contact.html', form=form)
+
+
