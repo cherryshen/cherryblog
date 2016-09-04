@@ -11,6 +11,10 @@
   cursor: pointer;
 }
 
+#gallery {
+  padding: 20px;
+}
+
 .controls{
     width:50px;
     display:block;
