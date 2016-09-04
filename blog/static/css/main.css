@@ -6,23 +6,22 @@
       border-radius: 0;
     }
 /* Set height of the grid*/
-    .row.content {height: 1000px}
+    .row.content {
+        height: 100%
+    }
 
 /* Set gray background color and 100% height */
     .sidenav {
-      padding-top: 20px;
       background-color: #f1f1f1;
       height: 100%;
+      margin-top: 20px;
+      padding: 20px;
+      border-color: #ADD8E6;
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 5px;
     }
 
-/* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height:auto;}
-    }
 
 .main-content {
     padding-top: 20px;
@@ -48,3 +47,7 @@
 	margin: 10px 0px 60px;
 	/* border: 1px solid GREY; */
 	}
+
+#create_post h1 {
+    left-margin: 10px
+}

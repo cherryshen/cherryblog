@@ -39,7 +39,7 @@
 
               <div class="input-group">
                   {{ g.search_form.hidden_tag() }}
-                  {{ g.search_form.search(size=20, class_="form-control") }}
+                  {{ g.search_form.search(size=20, class_="form-control", placeholder="Search blog") }}
                   <span class="input-group-btn">
                     <button class="btn btn-default" type="submit">
                       <span class="glyphicon glyphicon-search"></span>
@@ -66,14 +66,24 @@
 
 <div class="container-fluid text-center">
   <div class="row content">
-    <div class="col-sm-3 sidenav">
-        <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="#section1">Link</a></li>
-            <li><a href="#section2">Link</a></li>
-            <li><a href="#section2">Link</a></li>
-            <li><a href="#section2">Link</a></li>
-        </ul><br>
-
+    <div class="col-sm-3">
+        <div class="sidenav">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#section1">Link</a></li>
+                <li><a href="#section2">Link</a></li>
+                <li><a href="#section2">Link</a></li>
+                <li><a href="#section2">Link</a></li>
+            </ul>
+        </div>
+        <div class="sidenav">
+            <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;
+            showCalendars=0&amp;showTz=0&amp;height=280&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles"
+                    style="border-width:0" width="220" height="280" frameborder="0" scrolling="no">
+            </iframe>
+        </div>
+        <div class="sidenav">
+            <div id="map" style="width:220px;height:280px"></div>
+        </div>
     </div>
     <div class="col-sm-9 text-left">
         {% block content %}{% endblock %}
@@ -81,6 +91,8 @@
   </div>
 </div>
 
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="/static/js/map.js"></script>
 
   </body>
 </html>
