@@ -4,8 +4,12 @@ _build
 dist
 *.pyc
 __pycache__
-config.py
 app.db
 search.db
 .idea
 .DS_Store
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

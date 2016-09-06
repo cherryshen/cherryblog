@@ -18,8 +18,8 @@ class User(db.Model):
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String, index=True, unique=True)
-    password = db.Column(db.String)
+    email = db.Column(db.String(255), index=True, unique=True)
+    password = db.Column(db.String(12))
     authenticated = db.Column(db.Boolean, default=False)
     about_me = db.Column(db.String(3000))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
